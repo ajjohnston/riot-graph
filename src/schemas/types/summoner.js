@@ -30,7 +30,7 @@ export default new GraphQLObjectType({
     matchList: {
       type: MatchListType,
       resolve: ({ accountId }, _, { loaders }) =>
-        loaders.matchList().load(accountId),
+        loaders.matchList.load(accountId),
     },
   }),
 })
