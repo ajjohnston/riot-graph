@@ -1,6 +1,7 @@
 {
   "API": {
     "HOST": "https://na1.api.riotgames.com",
-    "KEY": "YOUR-KEY-HERE"
+    "KEY": "YOUR-KEY-HERE",
+    "MAX_CALLS_PER_SECOND": 10
   }
 }

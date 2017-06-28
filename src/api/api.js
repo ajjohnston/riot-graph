@@ -1,6 +1,6 @@
-import request from 'request-promise'
-import config from '../../config.json'
+import limiter from './limiter'
 import logger from '../logger'
+import config from '../../config.json'
 
 export default function (url, key = config.API.KEY) {
   const options = {
@@ -11,9 +11,11 @@ export default function (url, key = config.API.KEY) {
     json: true,
   }
 
-  logger.debug({
-    uri: options.uri,
-  })
+  return limiter.req(options).then((res) => {
+    logger.debug({
+      uri: options.uri,
+    })
 
-  return request(options)
+    return res
+  })
 }
