@@ -1,0 +1,55 @@
+{
+  "name": "riot-graph",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node lib/index.js",
+    "dev": "nodemon src/index.js --exec babel-node --presets env",
+    "lint": "eslint src/",
+    "transpile": "babel src/ -d lib/"
+  },
+  "dependencies": {
+    "dataloader": "^1.3.0",
+    "express": "^4.15.3",
+    "express-graphql": "^0.6.6",
+    "graphql": "^0.10.3",
+    "request-promise": "^4.2.1",
+    "winston": "^2.3.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.25.0",
+    "babel-eslint": "^7.2.3",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-env": "^1.5.2",
+    "eslint": "^4.1.1",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-import": "^2.6.0",
+    "nodemon": "^1.11.0"
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ],
+    "plugins": [
+      "transform-object-rest-spread"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "airbnb-base",
+    "plugins": [
+      "import"
+    ],
+    "rules": {
+      "semi": [
+        "error",
+        "never"
+      ],
+      "comma-dangle": [
+        "error",
+        "always-multiline"
+      ]
+    }
+  }
+}
