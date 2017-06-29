@@ -13,7 +13,8 @@ export default function () {
   const opts = (request) => {
     const apiKey = request.get(RIOT_TOKEN_HEADER)
 
-    return { schema: riotSchema,
+    return {
+      schema: riotSchema,
       graphiql: true,
       context: {
         loaders: {
