@@ -3,8 +3,8 @@ import getRiotQuery from '../api/api'
 
 const ITEM_ENDPOINT = id => `lol/static-data/v3/items/${id}?tags=all`
 
-const getItemById = id => getRiotQuery(ITEM_ENDPOINT(id))
+const getItemById = (id, key) => getRiotQuery(ITEM_ENDPOINT(id), key)
 
-export default new DataLoader(
-  ids => Promise.all(ids.map(id => getItemById(id)))
+export default key => new DataLoader(
+  ids => Promise.all(ids.map(id => getItemById(id, key)))
 )
