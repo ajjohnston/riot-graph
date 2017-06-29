@@ -7,9 +7,11 @@ import matchListLoader from './loaders/matchList'
 import summonerLoader from './loaders/summoner'
 import summonerByNameLoader from './loaders/summonerByName'
 
+const RIOT_TOKEN_HEADER = 'X-Riot-Token'
+
 export default function () {
   const opts = (request) => {
-    const apiKey = request.get('X-Riot-Token')
+    const apiKey = request.get(RIOT_TOKEN_HEADER)
 
     return { schema: riotSchema,
       graphiql: true,
