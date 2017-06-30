@@ -7,7 +7,7 @@ import matchListLoader from './loaders/matchList'
 import summonerLoader from './loaders/summoner'
 import summonerByNameLoader from './loaders/summonerByName'
 
-const RIOT_TOKEN_HEADER = 'X-Riot-Token'
+export const RIOT_TOKEN_HEADER = 'X-Riot-Token'
 
 export default function () {
   const opts = (request) => {
@@ -15,7 +15,7 @@ export default function () {
 
     return {
       schema: riotSchema,
-      graphiql: true,
+      graphiql: false,
       context: {
         loaders: {
           champion: championLoader(apiKey),

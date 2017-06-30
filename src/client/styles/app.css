@@ -1,0 +1,28 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+html{
+  height: 100%;
+}
+
+#app-wrapper {
+  height: 100%;
+}
+
+.logo {
+  width: 30px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.toolbar {
+  flex-grow: 1;
+}
+
+.apiKeyField {
+  margin-left: auto;
+  width: 450px;
+}
