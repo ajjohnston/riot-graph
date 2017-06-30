@@ -6,12 +6,52 @@ import 'graphiql/graphiql.css'
 import RiotFist from './img/riot-fist.png'
 import './styles/app.css'
 
+const DEFAULT_QUERY = `
+{
+  summoner(name: "riot heartwumbo") {
+    id
+    name
+    matchList {
+      totalGames
+      matches {
+        gameId
+        match {
+          gameMode
+          participants {
+            participantId
+            highestAchievedSeasonTier
+          }
+        }
+        champion {
+          id
+          name
+          image {
+            full
+            group
+            sprite
+            h
+            w
+            x
+            y
+          }
+          stats {
+            hp
+            hpregenperlevel
+          }
+          allyTips
+        }
+      }
+    }
+  }
+}
+`
+
 export default class CustomGraphiQL extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       apiKey: '',
-      query: '',
+      query: DEFAULT_QUERY,
       variables: '',
       response: '',
       schema: undefined,
@@ -64,7 +104,7 @@ export default class CustomGraphiQL extends React.Component {
             className="apiKeyField"
             ref={ (c) => { this.apiKeyField = c } }
             type="text"
-            placeholder="your_api_key"
+            placeholder="Your API key here..."
           />
         </GraphiQL.Toolbar>
       </GraphiQL>
