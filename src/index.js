@@ -6,11 +6,11 @@ import config from '../config.json'
 
 const app = express()
 
-app.use(express.static(path.join(__dirname, './client/dist')))
+app.use(express.static(path.join(__dirname, '../dist')))
 
 app.use('/graphql', graphql())
 app.use('/ui', (req, res) => {
-  const indexPath = path.join(__dirname, './client/dist', 'index.html')
+  const indexPath = path.join(__dirname, '../dist', 'index.html')
   res.sendFile(indexPath)
 })
 

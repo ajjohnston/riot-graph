@@ -8,7 +8,7 @@
     "build": "yarn lint && yarn transpile && yarn build-client",
     "build-client": "env NODE_ENV=production webpack -p --bail --config webpack.config.js",
     "dev": "yarn build-client && nodemon src/index.js --exec babel-node --presets env",
-    "lint": "eslint src/",
+    "lint": "eslint src/ public/",
     "transpile": "babel src/ -d lib/"
   },
   "dependencies": {
@@ -50,8 +50,7 @@
     ],
     "plugins": [
       "transform-object-rest-spread"
-    ],
-    "ignore": ["src/client/dist/"]
+    ]
   },
   "eslintConfig": {
     "extends": [
@@ -87,6 +86,5 @@
         }
       ]
     }
-  },
-  "eslintIgnore": ["src/client/dist/**/*.js"]
+  }
 }

@@ -5,5 +5,5 @@ WORKDIR /app
 
 ENV NODE_ENV production
 EXPOSE 4000
-RUN npm run transpile
+RUN npm run build
 CMD ["npm", "start"]
