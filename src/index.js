@@ -2,6 +2,7 @@ import express from 'express'
 import path from 'path'
 import graphql from './graphql'
 import logger from './logger'
+import config from '../config.json'
 
 const app = express()
 
@@ -13,6 +14,8 @@ app.use('/ui', (req, res) => {
   res.sendFile(indexPath)
 })
 
-app.listen(4000, () => {
-  logger.info('Listening on port 4000')
+app.listen(config.PORT, () => {
+  logger.info(`Listening on port ${config.PORT}`)
+  logger.info(`Send GraphQL queries localhost:${config.PORT}/graphql`)
+  logger.info(`GraphiQL available at localhost:${config.PORT}/ui`)
 })
