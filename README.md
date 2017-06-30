@@ -18,6 +18,6 @@ yarn dev
 
 ### Production
 ```
-yarn transpile
+yarn build
 yarn start
 ```

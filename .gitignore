@@ -60,3 +60,6 @@ typings/
 # Transpiled files
 lib/
 config.json
+
+# Webpack files
+dist/
