@@ -1,10 +1,11 @@
 import {
   GraphQLInt,
+  GraphQLList,
   GraphQLObjectType,
   GraphQLString,
 } from 'graphql'
 
-const ImageType = new GraphQLObjectType({
+export const ImageType = new GraphQLObjectType({
   name: 'Image',
   fields: () => ({
     full: {
@@ -31,4 +32,14 @@ const ImageType = new GraphQLObjectType({
   }),
 })
 
-export default ImageType
+export const LevelTipType = new GraphQLObjectType({
+  name: 'ChampionLevelTip',
+  fields: () => ({
+    effect: {
+      type: new GraphQLList(GraphQLString),
+    },
+    label: {
+      type: new GraphQLList(GraphQLString),
+    },
+  }),
+})

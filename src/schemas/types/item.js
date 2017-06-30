@@ -6,7 +6,7 @@ import {
   GraphQLObjectType,
   GraphQLString,
 } from 'graphql'
-import ImageType from './common'
+import { ImageType } from './common'
 
 const ItemGoldType = new GraphQLObjectType({
   name: 'ItemGold',

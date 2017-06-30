@@ -6,7 +6,7 @@ import {
   GraphQLObjectType,
   GraphQLString,
 } from 'graphql'
-import ImageType from './common'
+import { ImageType, LevelTipType } from './common'
 
 const InfoType = new GraphQLObjectType({
   name: 'ChampionInfo',
@@ -125,18 +125,6 @@ const ChampionPassiveType = new GraphQLObjectType({
   }),
 })
 
-const ChampionLevelTipType = new GraphQLObjectType({
-  name: 'ChampionLevelTip',
-  fields: () => ({
-    effect: {
-      type: new GraphQLList(GraphQLString),
-    },
-    label: {
-      type: new GraphQLList(GraphQLString),
-    },
-  }),
-})
-
 const ChampionSpellVarsType = new GraphQLObjectType({
   name: 'ChampionSpellVars',
   fields: () => ({
@@ -168,7 +156,7 @@ const ChampionSpellType = new GraphQLObjectType({
       type: GraphQLString,
     },
     leveltip: {
-      type: ChampionLevelTipType,
+      type: LevelTipType,
     },
     vars: {
       type: new GraphQLList(ChampionSpellVarsType),
