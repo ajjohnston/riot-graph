@@ -87,7 +87,7 @@ export default class CustomGraphiQL extends React.Component {
       <GraphiQL fetcher={ graphQLFetcher } ref={ (c) => { this.graphiql = c } } { ...this.state }>
         <GraphiQL.Logo>
           <img src={ RiotFist } className="logo" />
-          Riot Graph
+          Riot GraphQL
         </GraphiQL.Logo>
         <GraphiQL.Toolbar className="toolbar">
           <GraphiQL.Button
