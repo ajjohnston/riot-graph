@@ -6,6 +6,7 @@ import matchLoader from './loaders/match'
 import matchListLoader from './loaders/matchList'
 import summonerLoader from './loaders/summoner'
 import summonerByNameLoader from './loaders/summonerByName'
+import summonerSpellLoader from './loaders/summonerSpell'
 
 export const RIOT_TOKEN_HEADER = 'X-Riot-Token'
 
@@ -24,6 +25,7 @@ export default function () {
           matchList: matchListLoader(apiKey),
           summoner: summonerLoader(apiKey),
           summonerByName: summonerByNameLoader(apiKey),
+          summonerSpell: summonerSpellLoader(apiKey),
         },
       },
     }

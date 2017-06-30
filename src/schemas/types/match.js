@@ -8,6 +8,7 @@ import {
 } from 'graphql'
 import ChampionType from './champion'
 import SummonerType from './summoner'
+import SummonerSpellType from './summonerSpell'
 
 const PlayerType = new GraphQLObjectType({
   name: 'Player',
@@ -348,11 +349,15 @@ const ParticipantType = new GraphQLObjectType({
     highestAchievedSeasonTier: {
       type: GraphQLString,
     },
-    spell1Id: {
-      type: GraphQLInt,
+    summonerSpell1: {
+      type: SummonerSpellType,
+      resolve: ({ spell1Id }, _, { loaders }) =>
+        loaders.summonerSpell.load(spell1Id),
     },
-    spell2Id: {
-      type: GraphQLInt,
+    summonerSpell2: {
+      type: SummonerSpellType,
+      resolve: ({ spell2Id }, _, { loaders }) =>
+        loaders.summonerSpell.load(spell2Id),
     },
     champion: {
       type: ChampionType,
