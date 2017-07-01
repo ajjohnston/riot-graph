@@ -7,6 +7,7 @@ import {
   GraphQLString,
 } from 'graphql'
 import ChampionType from './champion'
+import MapDetailsType from './map'
 import SummonerType from './summoner'
 import SummonerSpellType from './summonerSpell'
 
@@ -460,8 +461,10 @@ export default new GraphQLObjectType({
     gameMode: {
       type: GraphQLString, // TODO: Make this an enum
     },
-    mapId: {
-      type: GraphQLInt,
+    map: {
+      type: MapDetailsType,
+      resolve: ({ mapId }, _, { loaders }) =>
+        loaders.map.load(mapId),
     },
     gameType: {
       type: GraphQLString, // TODO: Make this an enum
