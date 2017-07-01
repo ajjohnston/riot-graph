@@ -7,6 +7,7 @@ import {
   GraphQLString,
 } from 'graphql'
 import ChampionType from './champion'
+import ItemType from './item'
 import MapDetailsType from './map'
 import SummonerType from './summoner'
 import SummonerSpellType from './summonerSpell'
@@ -127,9 +128,6 @@ const ParticipantStatsType = new GraphQLObjectType({
     largestKillingSpree: {
       type: GraphQLInt,
     },
-    item1: {
-      type: GraphQLInt,
-    },
     quadraKills: {
       type: GraphQLInt,
     },
@@ -151,14 +149,40 @@ const ParticipantStatsType = new GraphQLObjectType({
     firstTowerKill: {
       type: GraphQLBoolean,
     },
+    item0: {
+      type: ItemType,
+      resolve: ({ item0 }, _, { loaders }) =>
+        loaders.item.load(item0),
+    },
+    item1: {
+      type: ItemType,
+      resolve: ({ item1 }, _, { loaders }) =>
+        loaders.item.load(item1),
+    },
     item2: {
-      type: GraphQLInt,
+      type: ItemType,
+      resolve: ({ item2 }, _, { loaders }) =>
+        loaders.item.load(item2),
     },
     item3: {
-      type: GraphQLInt,
+      type: ItemType,
+      resolve: ({ item3 }, _, { loaders }) =>
+        loaders.item.load(item3),
     },
-    item0: {
-      type: GraphQLInt,
+    item4: {
+      type: ItemType,
+      resolve: ({ item4 }, _, { loaders }) =>
+        loaders.item.load(item4),
+    },
+    item5: {
+      type: ItemType,
+      resolve: ({ item5 }, _, { loaders }) =>
+        loaders.item.load(item5),
+    },
+    item6: {
+      type: ItemType,
+      resolve: ({ item6 }, _, { loaders }) =>
+        loaders.item.load(item6),
     },
     firstBloodAssist: {
       type: GraphQLBoolean,
@@ -167,15 +191,6 @@ const ParticipantStatsType = new GraphQLObjectType({
       type: GraphQLFloat,
     },
     wardsPlaced: {
-      type: GraphQLInt,
-    },
-    item4: {
-      type: GraphQLInt,
-    },
-    item5: {
-      type: GraphQLInt,
-    },
-    item6: {
       type: GraphQLInt,
     },
     turretKills: {
