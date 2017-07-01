@@ -1,10 +1,13 @@
 import express from 'express'
 import path from 'path'
+import cors from 'cors'
 import graphql from './graphql'
 import logger from './logger'
 import config from '../config.json'
 
 const app = express()
+
+app.use(cors())
 
 app.use(express.static(path.join(__dirname, '../dist')))
 
