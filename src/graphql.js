@@ -1,7 +1,9 @@
 import graphqlHTTP from 'express-graphql'
 import riotSchema from './schemas'
+
 import championLoader from './loaders/champion'
 import itemLoader from './loaders/item'
+import mapLoader from './loaders/map'
 import matchLoader from './loaders/match'
 import matchListLoader from './loaders/matchList'
 import summonerLoader from './loaders/summoner'
@@ -21,6 +23,7 @@ export default function () {
         loaders: {
           champion: championLoader(apiKey),
           item: itemLoader(apiKey),
+          map: mapLoader(apiKey),
           match: matchLoader(apiKey),
           matchList: matchListLoader(apiKey),
           summoner: summonerLoader(apiKey),
