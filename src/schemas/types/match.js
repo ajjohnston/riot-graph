@@ -494,7 +494,7 @@ export default new GraphQLObjectType({
       type: GraphQLInt,
     },
     gameCreation: {
-      type: GraphQLInt,
+      type: GraphQLFloat,
     },
   }),
 })
