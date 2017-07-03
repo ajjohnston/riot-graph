@@ -12,7 +12,7 @@ import summonerLoader from './loaders/summoner'
 import summonerByNameLoader from './loaders/summonerByName'
 import summonerSpellLoader from './loaders/summonerSpell'
 
-export const RIOT_TOKEN_HEADER = 'X-Riot-Token'
+const RIOT_TOKEN_HEADER = 'X-Riot-Token'
 
 export default function () {
   const opts = (request: Object) => {
@@ -31,7 +31,7 @@ export default function () {
 
     return {
       schema: riotSchema,
-      graphiql: false,
+      graphiql: true,
       context: {
         loaders,
       },
