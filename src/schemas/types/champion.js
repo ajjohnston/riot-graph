@@ -1,3 +1,4 @@
+// @flow
 import {
   GraphQLBoolean,
   GraphQLFloat,
@@ -281,7 +282,7 @@ export default new GraphQLObjectType({
     },
     enemyTips: {
       type: new GraphQLList(GraphQLString),
-      resolve: ({ enemytips }) => enemytips,
+      resolve: ({ enemytips }: { enemytips: Array<string>}) => enemytips,
     },
     stats: {
       type: ChampionStatsType,
@@ -312,7 +313,7 @@ export default new GraphQLObjectType({
     },
     allyTips: {
       type: new GraphQLList(GraphQLString),
-      resolve: ({ allytips }) => allytips,
+      resolve: ({ allytips }: { allytips: Array<string>}) => allytips,
     },
     key: {
       type: GraphQLString,

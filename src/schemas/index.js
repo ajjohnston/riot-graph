@@ -1,3 +1,4 @@
+// @flow
 import {
   GraphQLFloat,
   GraphQLInt,
@@ -7,6 +8,7 @@ import {
   GraphQLString,
 } from 'graphql'
 
+import { type Loaders } from '../loaders/loaders'
 import ChampionType from './types/champion'
 import ItemType from './types/item'
 import MatchType from './types/match'
@@ -22,7 +24,8 @@ const QueryType = new GraphQLObjectType({
           type: new GraphQLNonNull(GraphQLString),
         },
       },
-      resolve: (_, { id }, { loaders }) => loaders.champion.load(id),
+      resolve: (_: any, { id }: { id: string}, { loaders }: { loaders: Loaders}) =>
+        loaders.champion.load(id),
     },
     item: {
       type: ItemType,
@@ -31,7 +34,8 @@ const QueryType = new GraphQLObjectType({
           type: new GraphQLNonNull(GraphQLInt),
         },
       },
-      resolve: (_, { id }, { loaders }) => loaders.item.load(id),
+      resolve: (_: any, { id }: { id: string}, { loaders }: { loaders: Loaders}) =>
+        loaders.item.load(id),
     },
     match: {
       type: MatchType,
@@ -40,7 +44,8 @@ const QueryType = new GraphQLObjectType({
           type: new GraphQLNonNull(GraphQLFloat),
         },
       },
-      resolve: (_, { id }, { loaders }) => loaders.match.load(id),
+      resolve: (_: any, { id }: { id: string}, { loaders }: { loaders: Loaders}) =>
+        loaders.match.load(id),
     },
     summoner: {
       type: SummonerType,
@@ -49,7 +54,8 @@ const QueryType = new GraphQLObjectType({
           type: new GraphQLNonNull(GraphQLString),
         },
       },
-      resolve: (_, { name }, { loaders }) => loaders.summonerByName.load(name),
+      resolve: (_: any, { name }: { name: string}, { loaders }: { loaders: Loaders}) =>
+        loaders.summonerByName.load(name),
     },
   }),
 })

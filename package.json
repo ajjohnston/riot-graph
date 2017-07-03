@@ -7,8 +7,8 @@
     "start": "node lib/index.js",
     "build": "yarn lint && yarn transpile && yarn build-client",
     "build-client": "env NODE_ENV=production webpack -p --bail --config webpack.config.js",
-    "dev": "yarn build-client && nodemon src/index.js --exec babel-node --presets env",
-    "lint": "eslint src/ public/",
+    "dev": "nodemon src/index.js --exec babel-node --presets env",
+    "lint": "eslint src/ public/ && flow",
     "transpile": "babel src/ -d lib/"
   },
   "dependencies": {
@@ -33,12 +33,15 @@
     "babel-loader": "^7.1.1",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-env": "^1.5.2",
+    "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.4",
     "eslint": "^4.1.1",
     "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-flowtype": "^2.34.1",
     "eslint-plugin-import": "^2.6.0",
     "eslint-plugin-react": "^7.1.0",
+    "flow-bin": "^0.49.1",
     "html-webpack-plugin": "^2.29.0",
     "nodemon": "^1.11.0",
     "style-loader": "^0.18.2",
@@ -48,7 +51,8 @@
   "babel": {
     "presets": [
       "env",
-      "react"
+      "react",
+      "flow"
     ],
     "plugins": [
       "transform-object-rest-spread"
@@ -57,11 +61,13 @@
   "eslintConfig": {
     "extends": [
       "airbnb-base",
-      "plugin:react/recommended"
+      "plugin:react/recommended",
+      "plugin:flowtype/recommended"
     ],
     "plugins": [
       "import",
-      "react"
+      "react",
+      "flowtype"
     ],
     "parserOptions": {
       "ecmaFeatures": {
@@ -86,7 +92,13 @@
         {
           "when": "always"
         }
-      ]
+      ],
+      "flowtype/require-parameter-type": 2
+    },
+    "settings": {
+      "flowtype": {
+        "onlyFilesWithFlowAnnotation": true
+      }
     }
   }
 }

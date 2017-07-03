@@ -16,6 +16,7 @@ cp config.json.template config.json
 
 ### Development
 ```
+yarn build-client
 yarn dev
 ```
 

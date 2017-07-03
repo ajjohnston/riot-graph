@@ -1,10 +1,12 @@
+// @flow
 import DataLoader from 'dataloader'
 import getRiotQuery from '../api/api'
 
-const SUMMONER_SPELL_ENDPOINT = id => `lol/static-data/v3/summoner-spells/${id}?tags=all`
+const SUMMONER_SPELL_ENDPOINT = (id: string) => `lol/static-data/v3/summoner-spells/${id}?tags=all`
 
-const getSummonerSpellById = (id, key) => getRiotQuery(SUMMONER_SPELL_ENDPOINT(id), key)
+const getSummonerSpellById = (id: string, key: string) =>
+  getRiotQuery(SUMMONER_SPELL_ENDPOINT(id), key)
 
-export default key => new DataLoader(
-  ids => Promise.all(ids.map(id => getSummonerSpellById(id, key)))
+export default (key: string) => new DataLoader(
+  (ids: Array<string>) => Promise.all(ids.map((id: string) => getSummonerSpellById(id, key)))
 )
