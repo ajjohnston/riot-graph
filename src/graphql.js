@@ -1,6 +1,8 @@
+// @flow
 import graphqlHTTP from 'express-graphql'
 import riotSchema from './schemas'
 
+import { type Loaders } from './loaders/loaders'
 import championLoader from './loaders/champion'
 import itemLoader from './loaders/item'
 import mapLoader from './loaders/map'
@@ -13,23 +15,25 @@ import summonerSpellLoader from './loaders/summonerSpell'
 export const RIOT_TOKEN_HEADER = 'X-Riot-Token'
 
 export default function () {
-  const opts = (request) => {
+  const opts = (request: Object) => {
     const apiKey = request.get(RIOT_TOKEN_HEADER)
+
+    const loaders: Loaders = {
+      champion: championLoader(apiKey),
+      item: itemLoader(apiKey),
+      map: mapLoader(apiKey),
+      match: matchLoader(apiKey),
+      matchList: matchListLoader(apiKey),
+      summoner: summonerLoader(apiKey),
+      summonerByName: summonerByNameLoader(apiKey),
+      summonerSpell: summonerSpellLoader(apiKey),
+    }
 
     return {
       schema: riotSchema,
       graphiql: false,
       context: {
-        loaders: {
-          champion: championLoader(apiKey),
-          item: itemLoader(apiKey),
-          map: mapLoader(apiKey),
-          match: matchLoader(apiKey),
-          matchList: matchListLoader(apiKey),
-          summoner: summonerLoader(apiKey),
-          summonerByName: summonerByNameLoader(apiKey),
-          summonerSpell: summonerSpellLoader(apiKey),
-        },
+        loaders,
       },
     }
   }

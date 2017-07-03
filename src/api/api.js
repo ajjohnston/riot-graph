@@ -1,8 +1,9 @@
+// @flow
 import limiter from './limiter'
 import logger from '../logger'
 import config from '../../config.json'
 
-export default function (url, key = config.API.KEY) {
+export default function (url: string, key: string = config.API.KEY) {
   const uri = `${config.API.HOST}/${url}`
 
   const options = {
@@ -14,13 +15,13 @@ export default function (url, key = config.API.KEY) {
   }
 
   return limiter.req(options)
-    .then((res) => {
+    .then((res: any) => {
       logger.debug({
         uri,
       })
 
       return res
-    }).catch((err) => {
+    }).catch((err: Error) => {
       throw new Error(`url: [${uri}] error: [${err.message}]`)
     })
 }

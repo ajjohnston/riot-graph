@@ -1,3 +1,4 @@
+// @flow
 import {
   GraphQLInt,
   GraphQLObjectType,
@@ -5,7 +6,7 @@ import {
 } from 'graphql'
 import IMAGE_HOST from '../../../constants'
 
-const imageTypes = new Map()
+const imageTypes: Map<string, GraphQLObjectType> = new Map()
 
 export const IMAGE_TYPES = {
   CHAMPION: 'Champion',
@@ -15,9 +16,10 @@ export const IMAGE_TYPES = {
   SPELL: 'Spell',
 }
 
-const ImageType = (type = '') => {
-  if (imageTypes.has(type)) {
-    return imageTypes.get(type)
+const ImageType = (type: string): GraphQLObjectType => {
+  const existingType = imageTypes.get(type)
+  if (existingType) {
+    return existingType
   }
 
   const imageType = new GraphQLObjectType({
@@ -25,7 +27,7 @@ const ImageType = (type = '') => {
     fields: () => ({
       full: {
         type: GraphQLString,
-        resolve: ({ full }) => `${IMAGE_HOST}${type.toLowerCase()}/${full}`,
+        resolve: ({ full }: { full: string }) => `${IMAGE_HOST}${type.toLowerCase()}/${full}`,
       },
       group: {
         type: GraphQLString,

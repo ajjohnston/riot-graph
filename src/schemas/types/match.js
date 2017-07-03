@@ -1,3 +1,5 @@
+
+// @flow
 import {
   GraphQLBoolean,
   GraphQLFloat,
@@ -13,6 +15,7 @@ import MapDetailsType from './map'
 import SummonerType from './summoner'
 import SummonerSpellType from './summonerSpell'
 import QUEUE_TYPES from '../../constants/queues'
+import { type Loaders } from '../../loaders/loaders'
 
 const PlayerType = new GraphQLObjectType({
   name: 'Player',
@@ -43,7 +46,7 @@ const PlayerType = new GraphQLObjectType({
     },
     summoner: {
       type: SummonerType,
-      resolve: ({ accountId }, _, { loaders }) =>
+      resolve: ({ accountId }: { accountId: string}, _: any, { loaders }: { loaders: Object }) =>
         loaders.summoner.load(accountId),
     },
   }),
@@ -153,37 +156,37 @@ const ParticipantStatsType = new GraphQLObjectType({
     },
     item0: {
       type: ItemType,
-      resolve: ({ item0 }, _, { loaders }) =>
+      resolve: ({ item0 }: { item0: number}, _: any, { loaders }: { loaders: Loaders }) =>
         loaders.item.load(item0),
     },
     item1: {
       type: ItemType,
-      resolve: ({ item1 }, _, { loaders }) =>
+      resolve: ({ item1 }: { item1: number}, _: any, { loaders }: { loaders: Loaders }) =>
         loaders.item.load(item1),
     },
     item2: {
       type: ItemType,
-      resolve: ({ item2 }, _, { loaders }) =>
+      resolve: ({ item2 }: { item2: number}, _: any, { loaders }: { loaders: Loaders }) =>
         loaders.item.load(item2),
     },
     item3: {
       type: ItemType,
-      resolve: ({ item3 }, _, { loaders }) =>
+      resolve: ({ item3 }: { item3: number}, _: any, { loaders }: { loaders: Loaders }) =>
         loaders.item.load(item3),
     },
     item4: {
       type: ItemType,
-      resolve: ({ item4 }, _, { loaders }) =>
+      resolve: ({ item4 }: { item4: number}, _: any, { loaders }: { loaders: Loaders }) =>
         loaders.item.load(item4),
     },
     item5: {
       type: ItemType,
-      resolve: ({ item5 }, _, { loaders }) =>
+      resolve: ({ item5 }: { item5: number}, _: any, { loaders }: { loaders: Loaders }) =>
         loaders.item.load(item5),
     },
     item6: {
       type: ItemType,
-      resolve: ({ item6 }, _, { loaders }) =>
+      resolve: ({ item6 }: { item6: number}, _: any, { loaders }: { loaders: Loaders }) =>
         loaders.item.load(item6),
     },
     firstBloodAssist: {
@@ -369,17 +372,17 @@ const ParticipantType = new GraphQLObjectType({
     },
     summonerSpell1: {
       type: SummonerSpellType,
-      resolve: ({ spell1Id }, _, { loaders }) =>
+      resolve: ({ spell1Id }: { spell1Id: number }, _: any, { loaders }: { loaders: Loaders}) =>
         loaders.summonerSpell.load(spell1Id),
     },
     summonerSpell2: {
       type: SummonerSpellType,
-      resolve: ({ spell2Id }, _, { loaders }) =>
+      resolve: ({ spell2Id }: { spell2Id: number }, _: any, { loaders }: { loaders: Loaders}) =>
         loaders.summonerSpell.load(spell2Id),
     },
     champion: {
       type: ChampionType,
-      resolve: ({ championId }, _, { loaders }) =>
+      resolve: ({ championId }: { championId: number }, _: any, { loaders }: { loaders: Loaders}) =>
         loaders.champion.load(championId),
     },
   }),
@@ -393,7 +396,7 @@ const TeamBansType = new GraphQLObjectType({
     },
     champion: {
       type: ChampionType,
-      resolve: ({ championId }, _, { loaders }) =>
+      resolve: ({ championId }: { championId: number }, _: any, { loaders }: { loaders: Loaders}) =>
         loaders.champion.load(championId),
     },
   }),
@@ -465,7 +468,7 @@ export default new GraphQLObjectType({
     },
     queue: {
       type: GraphQLString,
-      resolve: ({ queueId }) => get(QUEUE_TYPES, `${queueId}.name`),
+      resolve: ({ queueId }: { queueId: number}) => get(QUEUE_TYPES, `${queueId}.name`),
     },
     gameId: {
       type: GraphQLFloat,
@@ -484,7 +487,7 @@ export default new GraphQLObjectType({
     },
     map: {
       type: MapDetailsType,
-      resolve: ({ mapId }, _, { loaders }) =>
+      resolve: ({ mapId }: { mapId: number }, _: any, { loaders }: { loaders: Loaders}) =>
         loaders.map.load(mapId),
     },
     gameType: {

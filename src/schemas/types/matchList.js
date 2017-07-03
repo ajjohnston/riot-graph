@@ -1,3 +1,4 @@
+// @flow
 import {
   GraphQLFloat,
   GraphQLInt,
@@ -7,6 +8,7 @@ import {
 } from 'graphql'
 import ChampionType from './champion'
 import MatchType from './match'
+import { type Loaders } from '../../loaders/loaders'
 
 const MatchReferenceType = new GraphQLObjectType({
   name: 'MatchReference',
@@ -20,12 +22,12 @@ const MatchReferenceType = new GraphQLObjectType({
     },
     match: {
       type: MatchType,
-      resolve: ({ gameId }, _, { loaders }) =>
+      resolve: ({ gameId }: { gameId: string }, _: any, { loaders }: { loaders: Loaders}) =>
         loaders.match.load(gameId),
     },
     champion: {
       type: ChampionType,
-      resolve: ({ champion }, _, { loaders }) =>
+      resolve: ({ champion }: { champion: string }, _: any, { loaders }: { loaders: Loaders}) =>
         loaders.champion.load(champion),
     },
     platformId: {

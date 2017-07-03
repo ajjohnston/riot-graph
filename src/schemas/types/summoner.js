@@ -1,9 +1,11 @@
+// @flow
 import {
   GraphQLInt,
   GraphQLObjectType,
   GraphQLString,
 } from 'graphql'
 import MatchListType from './matchList'
+import { type Loaders } from '../../loaders/loaders'
 
 export default new GraphQLObjectType({
   name: 'Summoner',
@@ -29,7 +31,7 @@ export default new GraphQLObjectType({
     },
     matchList: {
       type: MatchListType,
-      resolve: ({ accountId }, _, { loaders }) =>
+      resolve: ({ accountId }: { accountId: string }, _: any, { loaders }: { loaders: Loaders }) =>
         loaders.matchList.load(accountId),
     },
   }),

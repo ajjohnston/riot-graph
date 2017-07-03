@@ -1,10 +1,11 @@
+// @flow
 import DataLoader from 'dataloader'
 import getRiotQuery from '../api/api'
 
-const MATCHLIST_ENDPOINT = id => `lol/match/v3/matchlists/by-account/${id}/recent`
+const MATCHLIST_ENDPOINT = (id: string) => `lol/match/v3/matchlists/by-account/${id}/recent`
 
-const getMatchesById = (id, key) => getRiotQuery(MATCHLIST_ENDPOINT(id), key)
+const getMatchesById = (id: string, key: string) => getRiotQuery(MATCHLIST_ENDPOINT(id), key)
 
-export default key => new DataLoader(
-  ids => Promise.all(ids.map(id => getMatchesById(id, key)))
+export default (key: string) => new DataLoader(
+  (ids: Array<string>) => Promise.all(ids.map((id: string) => getMatchesById(id, key)))
 )
