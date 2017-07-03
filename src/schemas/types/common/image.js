@@ -4,7 +4,7 @@ import {
   GraphQLObjectType,
   GraphQLString,
 } from 'graphql'
-import IMAGE_HOST from '../../../constants'
+import { IMAGE_HOST } from '../../../constants/hosts'
 
 const imageTypes: Map<string, GraphQLObjectType> = new Map()
 
@@ -27,7 +27,7 @@ const ImageType = (type: string): GraphQLObjectType => {
     fields: () => ({
       full: {
         type: GraphQLString,
-        resolve: ({ full }: { full: string }) => `${IMAGE_HOST}${type.toLowerCase()}/${full}`,
+        resolve: ({ full }: { full: string }) => `${IMAGE_HOST}/${type.toLowerCase()}/${full}`,
       },
       group: {
         type: GraphQLString,

@@ -1,8 +1,6 @@
 // @flow
 import graphqlHTTP from 'express-graphql'
 import riotSchema from './schemas'
-
-import { type Loaders } from './loaders/loaders'
 import championLoader from './loaders/champion'
 import itemLoader from './loaders/item'
 import mapLoader from './loaders/map'
@@ -12,21 +10,29 @@ import summonerLoader from './loaders/summoner'
 import summonerByNameLoader from './loaders/summonerByName'
 import summonerSpellLoader from './loaders/summonerSpell'
 
+import { type Loaders } from './loaders/loaders'
+import { type Region } from './constants/regions'
+
+import config from '../config.json'
+
 const RIOT_TOKEN_HEADER = 'X-Riot-Token'
+const REGION_HEADER = 'X-Riot-Region'
 
 export default function () {
   const opts = (request: Object) => {
     const apiKey = request.get(RIOT_TOKEN_HEADER)
 
+    const region : Region = request.get(REGION_HEADER) || config.API.REGION
+
     const loaders: Loaders = {
-      champion: championLoader(apiKey),
-      item: itemLoader(apiKey),
-      map: mapLoader(apiKey),
-      match: matchLoader(apiKey),
-      matchList: matchListLoader(apiKey),
-      summoner: summonerLoader(apiKey),
-      summonerByName: summonerByNameLoader(apiKey),
-      summonerSpell: summonerSpellLoader(apiKey),
+      champion: championLoader(region, apiKey),
+      item: itemLoader(region, apiKey),
+      map: mapLoader(region, apiKey),
+      match: matchLoader(region, apiKey),
+      matchList: matchListLoader(region, apiKey),
+      summoner: summonerLoader(region, apiKey),
+      summonerByName: summonerByNameLoader(region, apiKey),
+      summonerSpell: summonerSpellLoader(region, apiKey),
     }
 
     return {

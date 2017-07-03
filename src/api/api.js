@@ -1,10 +1,12 @@
 // @flow
 import limiter from './limiter'
 import logger from '../logger'
+import { API_HOST } from '../constants/hosts'
+import { type Region } from '../constants/regions'
 import config from '../../config.json'
 
-export default function (url: string, key: string = config.API.KEY) {
-  const uri = `${config.API.HOST}/${url}`
+export default function (region: Region, url: string, key: string = config.API.KEY) {
+  const uri = `${API_HOST(region)}/${url}`
 
   const options = {
     uri,
