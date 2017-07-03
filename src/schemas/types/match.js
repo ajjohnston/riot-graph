@@ -6,11 +6,13 @@ import {
   GraphQLObjectType,
   GraphQLString,
 } from 'graphql'
+import { get } from 'lodash'
 import ChampionType from './champion'
 import ItemType from './item'
 import MapDetailsType from './map'
 import SummonerType from './summoner'
 import SummonerSpellType from './summonerSpell'
+import QUEUE_TYPES from '../../constants/queues'
 
 const PlayerType = new GraphQLObjectType({
   name: 'Player',
@@ -460,6 +462,10 @@ export default new GraphQLObjectType({
     },
     queueId: {
       type: GraphQLInt,
+    },
+    queue: {
+      type: GraphQLString,
+      resolve: ({ queueId }) => get(QUEUE_TYPES, `${queueId}.name`),
     },
     gameId: {
       type: GraphQLFloat,
