@@ -5,7 +5,8 @@ import {
   GraphQLObjectType,
   GraphQLString,
 } from 'graphql'
-import { ImageType, LevelTipType } from './common'
+import ImageType, { IMAGE_TYPES } from './common/image'
+import LevelTipType from './common/levelTip'
 
 const SpellVarsType = new GraphQLObjectType({
   name: 'SpellVars',
@@ -35,7 +36,7 @@ const SummonerSpellType = new GraphQLObjectType({
       type: new GraphQLList(SpellVarsType),
     },
     image: {
-      type: ImageType,
+      type: ImageType(IMAGE_TYPES.SPELL),
     },
     costBurn: {
       type: GraphQLString,

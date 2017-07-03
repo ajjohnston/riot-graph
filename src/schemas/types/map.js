@@ -5,7 +5,7 @@ import {
   GraphQLObjectType,
   GraphQLString,
 } from 'graphql'
-import { ImageType } from './common'
+import ImageType, { IMAGE_TYPES } from './common/image'
 
 const MapDetailsType = new GraphQLObjectType({
   name: 'MapDetails',
@@ -17,7 +17,7 @@ const MapDetailsType = new GraphQLObjectType({
       type: GraphQLString,
     },
     image: {
-      type: ImageType,
+      type: ImageType(IMAGE_TYPES.MAP),
     },
     mapId: {
       type: GraphQLFloat,

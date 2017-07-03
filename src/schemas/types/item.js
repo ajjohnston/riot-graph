@@ -6,7 +6,7 @@ import {
   GraphQLObjectType,
   GraphQLString,
 } from 'graphql'
-import { ImageType } from './common'
+import ImageType, { IMAGE_TYPES } from './common/image'
 
 const ItemGoldType = new GraphQLObjectType({
   name: 'ItemGold',
@@ -164,7 +164,7 @@ export default new GraphQLObjectType({
       type: GraphQLInt,
     },
     image: {
-      type: ImageType,
+      type: ImageType(IMAGE_TYPES.ITEM),
     },
     description: {
       type: GraphQLString,
