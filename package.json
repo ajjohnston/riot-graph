@@ -20,6 +20,7 @@
     "graphql": "^0.10.3",
     "isomorphic-fetch": "^2.2.1",
     "limit-request-promise": "^0.1.2",
+    "lodash": "^4.17.4",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "request-promise": "^4.2.1",
