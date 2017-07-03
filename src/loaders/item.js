@@ -7,7 +7,7 @@ const ITEM_ENDPOINT = (id: string) => `lol/static-data/v3/items/${id}?tags=all`
 
 const getItemById = (region: Region, id: string, key: string) => {
   if (id === 0) return null
-  return getRiotQuery(region, ITEM_ENDPOINT(id), key)
+  return getRiotQuery(region, ITEM_ENDPOINT(id), key, false)
 }
 
 export default (region: Region, key: string) => new DataLoader(

@@ -1,11 +1,13 @@
 // @flow
+import request from 'request-promise'
 import limiter from './limiter'
 import logger from '../logger'
 import { API_HOST } from '../constants/hosts'
 import { type Region } from '../constants/regions'
 import config from '../../config.json'
 
-export default function (region: Region, url: string, key: string = config.API.KEY) {
+export default function (region: Region, url: string, key: string = config.API.KEY,
+  rateLimited: boolean = true) {
   const uri = `${API_HOST(region)}/${url}`
 
   const options = {
@@ -16,14 +18,16 @@ export default function (region: Region, url: string, key: string = config.API.K
     json: true,
   }
 
-  return limiter.req(options)
-    .then((res: any) => {
-      logger.debug({
-        uri,
-      })
+  logger.debug({
+    uri,
+  })
 
-      return res
-    }).catch((err: Error) => {
+  if (!rateLimited) {
+    return request(options)
+  }
+
+  return limiter.req(options)
+    .catch((err: Error) => {
       throw new Error(`url: [${uri}] error: [${err.message}]`)
     })
 }
