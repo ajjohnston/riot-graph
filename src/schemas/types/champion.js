@@ -6,7 +6,8 @@ import {
   GraphQLObjectType,
   GraphQLString,
 } from 'graphql'
-import { ImageType, LevelTipType } from './common'
+import ImageType, { IMAGE_TYPES } from './common/image'
+import LevelTipType from './common/levelTip'
 
 const InfoType = new GraphQLObjectType({
   name: 'ChampionInfo',
@@ -111,7 +112,7 @@ const ChampionPassiveType = new GraphQLObjectType({
   name: 'ChampionPassive',
   fields: () => ({
     image: {
-      type: ImageType,
+      type: ImageType(IMAGE_TYPES.PASSIVE),
     },
     sanitizedDescription: {
       type: GraphQLString,
@@ -165,7 +166,7 @@ const ChampionSpellType = new GraphQLObjectType({
       type: GraphQLString,
     },
     image: {
-      type: ImageType,
+      type: ImageType(IMAGE_TYPES.SPELL),
     },
     sanitizedDescription: {
       type: GraphQLString,
@@ -207,7 +208,7 @@ const ChampionSpellType = new GraphQLObjectType({
       type: new GraphQLList(GraphQLString),
     },
     altimages: {
-      type: new GraphQLList(ImageType),
+      type: new GraphQLList(ImageType(IMAGE_TYPES.SPELL)),
     },
     name: {
       type: GraphQLString,
@@ -292,7 +293,7 @@ export default new GraphQLObjectType({
       type: GraphQLString,
     },
     image: {
-      type: ImageType,
+      type: ImageType(IMAGE_TYPES.CHAMPION),
     },
     tags: {
       type: new GraphQLList(GraphQLString),
