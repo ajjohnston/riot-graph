@@ -7,7 +7,7 @@ import {
 } from 'graphql'
 
 const LevelTipType = new GraphQLObjectType({
-  name: 'ChampionLevelTip',
+  name: 'LevelTip',
   fields: () => ({
     effect: {
       type: new GraphQLList(GraphQLString),

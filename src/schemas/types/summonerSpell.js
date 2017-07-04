@@ -8,27 +8,7 @@ import {
 } from 'graphql'
 import ImageType, { IMAGE_TYPES } from './common/image'
 import LevelTipType from './common/levelTip'
-
-const SpellVarsType = new GraphQLObjectType({
-  name: 'SpellVars',
-  fields: () => ({
-    ranksWith: {
-      type: GraphQLString,
-    },
-    dyn: {
-      type: GraphQLString,
-    },
-    link: {
-      type: GraphQLString,
-    },
-    coeff: {
-      type: new GraphQLList(GraphQLFloat),
-    },
-    key: {
-      type: GraphQLString,
-    },
-  }),
-})
+import SpellVarsType from './common/spellVars'
 
 const SummonerSpellType = new GraphQLObjectType({
   name: 'SummonerSpell',

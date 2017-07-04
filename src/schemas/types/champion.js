@@ -9,6 +9,7 @@ import {
 } from 'graphql'
 import ImageType, { IMAGE_TYPES } from './common/image'
 import LevelTipType from './common/levelTip'
+import SpellVarsType from './common/spellVars'
 
 const InfoType = new GraphQLObjectType({
   name: 'ChampionInfo',
@@ -127,27 +128,6 @@ const ChampionPassiveType = new GraphQLObjectType({
   }),
 })
 
-const ChampionSpellVarsType = new GraphQLObjectType({
-  name: 'ChampionSpellVars',
-  fields: () => ({
-    ranksWith: {
-      type: GraphQLString,
-    },
-    dyn: {
-      type: GraphQLString,
-    },
-    link: {
-      type: GraphQLString,
-    },
-    coeff: {
-      type: new GraphQLList(GraphQLFloat),
-    },
-    key: {
-      type: GraphQLString,
-    },
-  }),
-})
-
 const ChampionSpellType = new GraphQLObjectType({
   name: 'ChampionSpell',
   fields: () => ({
@@ -161,7 +141,7 @@ const ChampionSpellType = new GraphQLObjectType({
       type: LevelTipType,
     },
     vars: {
-      type: new GraphQLList(ChampionSpellVarsType),
+      type: new GraphQLList(SpellVarsType),
     },
     costType: {
       type: GraphQLString,
