@@ -1,6 +1,7 @@
 // @flow
 export type Loaders = {|
   champion: Object,
+  championMastery: Object,
   item: Object,
   league: Object,
   map: Object,

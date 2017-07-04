@@ -6,6 +6,7 @@ import {
   GraphQLObjectType,
   GraphQLString,
 } from 'graphql'
+import ChampionMasteryType from './championMastery'
 import MatchListType from './matchList'
 import LeaguePositionType from './league'
 import { IMAGE_HOST } from '../../constants/hosts'
@@ -67,6 +68,14 @@ export default new GraphQLObjectType({
         _: any,
         { loaders }: { loaders: Loaders }) =>
         loaders.league.load(id),
+    },
+    championMastery: {
+      type: new GraphQLList(ChampionMasteryType),
+      description: 'Champion masteries for this summoner',
+      resolve: ({ id }: { id: number },
+        _: any,
+        { loaders }: { loaders: Loaders }) =>
+        loaders.championMastery.load(id),
     },
   }),
 })
