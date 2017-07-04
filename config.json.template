@@ -3,6 +3,7 @@
   "API": {
     "KEY": "YOUR-KEY-HERE",
     "REGION": "NA1",
+    "PATCH": "7.13.1",
     "MAX_CALLS_PER_TIMESPAN": 100,
     "TIMESPAN_IN_SECONDS": 10
   }
