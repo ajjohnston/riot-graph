@@ -2,10 +2,12 @@
 import {
   GraphQLFloat,
   GraphQLInt,
+  GraphQLList,
   GraphQLObjectType,
   GraphQLString,
 } from 'graphql'
 import MatchListType from './matchList'
+import LeaguePositionType from './league'
 import { IMAGE_HOST } from '../../constants/hosts'
 import { type Loaders } from '../../loaders/loaders'
 
@@ -53,10 +55,18 @@ export default new GraphQLObjectType({
           type: GraphQLFloat,
         },
       },
-      resolve: ({ accountId }: { accountId: string },
+      resolve: ({ accountId }: { accountId: number },
         { start, count }: { start: number, count: number },
         { loaders }: { loaders: Loaders }) =>
         loaders.matchList(start, count).load(accountId),
+    },
+    leaguePositions: {
+      type: new GraphQLList(LeaguePositionType),
+      description: 'League positions for this summoner',
+      resolve: ({ id }: { id: number },
+        _: any,
+        { loaders }: { loaders: Loaders }) =>
+        loaders.league.load(id),
     },
   }),
 })

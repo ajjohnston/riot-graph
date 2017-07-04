@@ -3,6 +3,7 @@ import graphqlHTTP from 'express-graphql'
 import riotSchema from './schemas'
 import championLoader from './loaders/champion'
 import itemLoader from './loaders/item'
+import leagueLoader from './loaders/league'
 import mapLoader from './loaders/map'
 import matchLoader from './loaders/match'
 import matchListLoader from './loaders/matchList'
@@ -27,6 +28,7 @@ export default function () {
     const loaders: Loaders = {
       champion: championLoader(region, apiKey),
       item: itemLoader(region, apiKey),
+      league: leagueLoader(region, apiKey),
       map: mapLoader(region, apiKey),
       match: matchLoader(region, apiKey),
       matchList: matchListLoader(region, apiKey),
