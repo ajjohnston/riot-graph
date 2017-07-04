@@ -6,6 +6,8 @@ import { API_HOST } from '../constants/hosts'
 import { type Region } from '../constants/regions'
 import config from '../../config.json'
 
+const X_RIOT_TOKEN_HEADER = 'X-Riot-Token'
+
 export default function (region: Region, url: string, key: string = config.API.KEY,
   rateLimited: boolean = true) {
   const uri = `${API_HOST(region)}/${url}`
@@ -13,7 +15,7 @@ export default function (region: Region, url: string, key: string = config.API.K
   const options = {
     uri,
     headers: {
-      'X-Riot-Token': key,
+      [X_RIOT_TOKEN_HEADER]: key,
     },
     json: true,
   }
