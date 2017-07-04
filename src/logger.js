@@ -1,5 +1,11 @@
+// @flow
 import winston from 'winston'
 
-winston.level = 'debug'
-
-export default winston
+export default new winston.Logger({
+  level: 'debug',
+  transports: [
+    new (winston.transports.Console)({
+      timestamp: true,
+    }),
+  ],
+})
