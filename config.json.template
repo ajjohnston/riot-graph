@@ -4,6 +4,6 @@
     "KEY": "YOUR-KEY-HERE",
     "REGION": "NA1",
     "MAX_CALLS_PER_TIMESPAN": 100,
-    "RATE_TIMESPAN": 10
+    "TIMESPAN_IN_SECONDS": 10
   }
 }
