@@ -4,7 +4,7 @@ export type Loaders = {|
   item: Object,
   map: Object,
   match: Object,
-  matchList: Object,
+  matchList: (start: number, count: number) => Object,
   summoner: Object,
   summonerByName: Object,
   summonerSpell: Object,

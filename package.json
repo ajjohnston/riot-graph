@@ -7,7 +7,7 @@
     "start": "node lib/index.js",
     "build": "yarn lint && yarn transpile",
     "dev": "nodemon src/index.js --exec babel-node --presets env",
-    "lint": "eslint src/ public/ && flow",
+    "lint": "eslint src/ && flow",
     "transpile": "babel src/ -d lib/"
   },
   "dependencies": {

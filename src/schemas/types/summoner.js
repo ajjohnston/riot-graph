@@ -1,5 +1,6 @@
 // @flow
 import {
+  GraphQLFloat,
   GraphQLInt,
   GraphQLObjectType,
   GraphQLString,
@@ -31,8 +32,18 @@ export default new GraphQLObjectType({
     },
     matchList: {
       type: MatchListType,
-      resolve: ({ accountId }: { accountId: string }, _: any, { loaders }: { loaders: Loaders }) =>
-        loaders.matchList.load(accountId),
+      args: {
+        start: {
+          type: GraphQLFloat,
+        },
+        count: {
+          type: GraphQLFloat,
+        },
+      },
+      resolve: ({ accountId }: { accountId: string },
+        { start, count }: { start: number, count: number },
+        { loaders }: { loaders: Loaders }) =>
+        loaders.matchList(start, count).load(accountId),
     },
   }),
 })
