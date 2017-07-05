@@ -30,7 +30,7 @@ export default function () {
       champion: championLoader(region, apiKey),
       championMastery: championMasteryLoader(region, apiKey),
       item: itemLoader(region, apiKey),
-      league: leagueLoader(region, apiKey),
+      leaguePositions: leagueLoader(region, apiKey),
       map: mapLoader(region, apiKey),
       match: matchLoader(region, apiKey),
       matchList: matchListLoader(region, apiKey),

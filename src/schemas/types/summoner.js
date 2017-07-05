@@ -67,7 +67,7 @@ export default new GraphQLObjectType({
       resolve: ({ id }: { id: number },
         _: any,
         { loaders }: { loaders: Loaders }) =>
-        loaders.league.load(id),
+        loaders.leaguePositions.load(id),
     },
     championMastery: {
       type: new GraphQLList(ChampionMasteryType),

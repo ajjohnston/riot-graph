@@ -3,7 +3,7 @@ export type Loaders = {|
   champion: Object,
   championMastery: Object,
   item: Object,
-  league: Object,
+  leaguePositions: Object,
   map: Object,
   match: Object,
   matchList: (start: number, count: number) => Object,

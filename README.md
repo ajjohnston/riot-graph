@@ -16,6 +16,11 @@ cp config.json.template config.json
 yarn dev
 ```
 
+### Testing
+```
+yarn test
+```
+
 ### Production
 ```
 yarn build

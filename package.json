@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node lib/index.js",
+    "test": "jest",
     "build": "yarn lint && yarn transpile",
     "dev": "nodemon src/index.js --exec babel-node --presets env",
     "lint": "eslint src/ && flow",
@@ -30,7 +31,9 @@
     "eslint-config-airbnb-base": "^11.2.0",
     "eslint-plugin-flowtype": "^2.34.1",
     "eslint-plugin-import": "^2.6.0",
+    "eslint-plugin-jest": "^20.0.3",
     "flow-bin": "^0.49.1",
+    "jest": "^20.0.4",
     "nodemon": "^1.11.0"
   },
   "babel": {
@@ -42,14 +45,32 @@
       "transform-object-rest-spread"
     ]
   },
+  "jest": {
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "coverageReporters": [
+      "lcov",
+      "html"
+    ],
+    "moduleNameMapper": {
+      "^mongoose$": "<rootDir>/node_modules/mongoose"
+    }
+  },
   "eslintConfig": {
     "extends": [
       "airbnb-base",
-      "plugin:flowtype/recommended"
+      "plugin:flowtype/recommended",
+      "plugin:jest/recommended"
     ],
+    "env": {
+      "jest/globals": true
+    },
     "plugins": [
       "import",
-      "flowtype"
+      "flowtype",
+      "jest"
     ],
     "parserOptions": {
       "ecmaFeatures": {
