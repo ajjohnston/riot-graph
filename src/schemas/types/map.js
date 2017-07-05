@@ -14,8 +14,9 @@ const MapDetailsType = new GraphQLObjectType({
     id: {
       type: GraphQLInt,
     },
-    mapName: {
+    name: {
       type: GraphQLString,
+      resolve: ({ mapName }: { mapName: string }) => mapName,
     },
     image: {
       type: ImageType(IMAGE_TYPES.MAP),

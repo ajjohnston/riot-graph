@@ -63,3 +63,5 @@ config.json
 
 # Webpack files
 dist/
+
+.DS_Store
