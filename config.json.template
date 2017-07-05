@@ -1,5 +1,6 @@
 {
   "PORT": 4000,
+  "LOG_LEVEL": "debug",
   "API": {
     "KEY": "YOUR-KEY-HERE",
     "REGION": "NA1",
